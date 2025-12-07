@@ -111,7 +111,6 @@
     <factorypathentry kind="VARJAR" id="M2_REPO/com/knuddels/jtokkit/1.0.0/jtokkit-1.0.0.jar" enabled="true" runInBatchMode="false"/>
     <factorypathentry kind="VARJAR" id="M2_REPO/org/springframework/ai/spring-ai-retry/1.0.0-M1/spring-ai-retry-1.0.0-M1.jar" enabled="true" runInBatchMode="false"/>
     <factorypathentry kind="VARJAR" id="M2_REPO/org/springframework/retry/spring-retry/2.0.6/spring-retry-2.0.6.jar" enabled="true" runInBatchMode="false"/>
-    <factorypathentry kind="VARJAR" id="M2_REPO/org/springframework/spring-webflux/6.1.8/spring-webflux-6.1.8.jar" enabled="true" runInBatchMode="false"/>
     <factorypathentry kind="VARJAR" id="M2_REPO/io/rest-assured/json-path/5.4.0/json-path-5.4.0.jar" enabled="true" runInBatchMode="false"/>
     <factorypathentry kind="VARJAR" id="M2_REPO/org/apache/groovy/groovy-json/4.0.21/groovy-json-4.0.21.jar" enabled="true" runInBatchMode="false"/>
     <factorypathentry kind="VARJAR" id="M2_REPO/org/apache/groovy/groovy/4.0.21/groovy-4.0.21.jar" enabled="true" runInBatchMode="false"/>
@@ -119,4 +118,7 @@
     <factorypathentry kind="VARJAR" id="M2_REPO/org/apache/commons/commons-lang3/3.14.0/commons-lang3-3.14.0.jar" enabled="true" runInBatchMode="false"/>
     <factorypathentry kind="VARJAR" id="M2_REPO/com/github/victools/jsonschema-generator/4.31.1/jsonschema-generator-4.31.1.jar" enabled="true" runInBatchMode="false"/>
     <factorypathentry kind="VARJAR" id="M2_REPO/com/github/victools/jsonschema-module-jackson/4.31.1/jsonschema-module-jackson-4.31.1.jar" enabled="true" runInBatchMode="false"/>
+    <factorypathentry kind="VARJAR" id="M2_REPO/org/springframework/ai/spring-ai-ollama-spring-boot-starter/1.0.0-M1/spring-ai-ollama-spring-boot-starter-1.0.0-M1.jar" enabled="true" runInBatchMode="false"/>
+    <factorypathentry kind="VARJAR" id="M2_REPO/org/springframework/ai/spring-ai-ollama/1.0.0-M1/spring-ai-ollama-1.0.0-M1.jar" enabled="true" runInBatchMode="false"/>
+    <factorypathentry kind="VARJAR" id="M2_REPO/org/springframework/spring-webflux/6.1.8/spring-webflux-6.1.8.jar" enabled="true" runInBatchMode="false"/>
 </factorypath>

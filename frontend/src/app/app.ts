@@ -45,7 +45,7 @@ export class App implements OnInit {
   // Execution State
   isRunning = false;
   lastResult: any = null;
-  showResult = true;
+  showResult = false;
 
   constructor(private http: HttpClient) {}
 
@@ -77,7 +77,7 @@ export class App implements OnInit {
   initDemoData() {
      this.nodes.set([
          { id: '1', type: 'START', label: 'Chat Trigger', position: { x: 100, y: 200 }, data: { description: 'User sends a message' } },
-         { id: '2', type: 'LLM', label: 'Gemini Pro', position: { x: 500, y: 150 }, data: { model: 'gemini-1.5-pro' } },
+         { id: '2', type: 'LLM', label: 'Llama 3.1 Local', position: { x: 500, y: 150 }, data: { model: 'llama3.1:8b', provider: 'ollama' } },
          { id: '3', type: 'TOOL', label: 'Search Web', position: { x: 500, y: 350 }, data: { source: 'Google' } },
          { id: '4', type: 'OUTPUT', label: 'Response', position: { x: 900, y: 250 }, data: {} }
      ]);
@@ -242,10 +242,21 @@ export class App implements OnInit {
       return this.generatePath(t.fromPos, t.toPos);
   }
 
-  runFlow() {
+  runFlow(input?: string) {
+    if (!input && !this.isRunning) {
+        input = "Tell me a joke about programming";
+    }
+    if (!input) return;
+
     this.isRunning = true;
+    this.showResult = false; 
+    
+    // In future: get dynamic workspace ID from route or selection
     const workspaceId = 'tpl-basic-chat';
-    const payload = { input: "Start execution" };
+    const payload = { 
+        input: input,
+        model: "llama3.1:8b" 
+    };
 
     this.http.post(`/api/workspaces/${workspaceId}/trigger`, payload).subscribe({
       next: (res) => {
@@ -256,6 +267,7 @@ export class App implements OnInit {
       error: (err) => {
         this.lastResult = { error: err.message };
         this.isRunning = false;
+        this.showResult = true;
       }
     });
   }

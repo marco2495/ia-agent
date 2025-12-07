@@ -18,7 +18,7 @@ public class WorkspaceTemplatesService {
             "description", "Un asistente simple que responde preguntas usando un modelo de lenguaje.",
             "nodes", List.of(
                 Map.of("id", "start", "type", "START", "position", Map.of("x", 100, "y", 300)),
-                Map.of("id", "llm-node", "type", "LLM", "position", Map.of("x", 400, "y", 300), "data", Map.of("label", "Asistente AI", "model", "gpt-oss")),
+                Map.of("id", "llm-node", "type", "LLM", "position", Map.of("x", 400, "y", 300), "data", Map.of("label", "Asistente AI", "model", "llama3.1:8b", "provider", "ollama")),
                 Map.of("id", "output", "type", "OUTPUT", "position", Map.of("x", 700, "y", 300))
             ),
             "connections", List.of(

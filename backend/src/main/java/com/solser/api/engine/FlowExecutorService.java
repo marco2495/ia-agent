@@ -5,6 +5,7 @@ import org.springframework.stereotype.Service;
 import java.util.*;
 import java.util.concurrent.CompletableFuture;
 import java.util.concurrent.ConcurrentHashMap;
+import java.util.concurrent.CopyOnWriteArrayList;
 import java.util.stream.Collectors;
 
 @Service
@@ -37,6 +38,9 @@ public class FlowExecutorService {
             }
         }
 
+        // Collection to store outputs from terminal nodes (leafs)
+        List<Map<String, Object>> terminalOutputs = new CopyOnWriteArrayList<>();
+
         // Find Start Nodes
         List<String> startNodeIds = nodes.stream()
             .filter(n -> "START".equals(n.get("type")))
@@ -45,18 +49,27 @@ public class FlowExecutorService {
 
         // Recursive Execution
         List<CompletableFuture<Void>> futures = startNodeIds.stream()
-            .map(id -> processNodeRecursively(id, initialInput, nodeMap, adjList))
+            .map(id -> processNodeRecursively(id, initialInput, nodeMap, adjList, terminalOutputs))
             .collect(Collectors.toList());
 
         return CompletableFuture.allOf(futures.toArray(new CompletableFuture[0]))
-            .thenApply(v -> Map.of("status", "success", "message", "Flow executed"));
+            .thenApply(v -> {
+                if (!terminalOutputs.isEmpty()) {
+                    // Return the last terminal output, or merge them. 
+                    // For this simple chat flow, the last leaf is the Output node.
+                    // We return the map from it.
+                    return terminalOutputs.get(terminalOutputs.size() - 1);
+                }
+                return Map.of("status", "success", "message", "Flow executed (No Output)");
+            });
     }
 
     private CompletableFuture<Void> processNodeRecursively(
         String nodeId, 
         Map<String, Object> input,
         Map<String, Map<String, Object>> nodeMap,
-        Map<String, List<String>> adjList
+        Map<String, List<String>> adjList,
+        List<Map<String, Object>> terminalOutputs
     ) {
         Map<String, Object> node = nodeMap.get(nodeId);
         if (node == null) return CompletableFuture.completedFuture(null);
@@ -74,11 +87,15 @@ public class FlowExecutorService {
 
         return execution.thenCompose(result -> {
             List<String> children = adjList.getOrDefault(nodeId, Collections.emptyList());
-            if (children.isEmpty()) {
+            
+            // If leaf node, capture result
+            if (children.isEmpty()) { 
+                terminalOutputs.add(result);
                 return CompletableFuture.completedFuture(null);
             }
+
             List<CompletableFuture<Void>> childFutures = children.stream()
-                .map(childId -> processNodeRecursively(childId, result, nodeMap, adjList))
+                .map(childId -> processNodeRecursively(childId, result, nodeMap, adjList, terminalOutputs))
                 .collect(Collectors.toList());
             
             return CompletableFuture.allOf(childFutures.toArray(new CompletableFuture[0]));
