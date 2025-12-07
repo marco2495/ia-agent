@@ -1,0 +1,58 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>AutoFlow AI - Validado</title>
+  <base href="/">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="icon" type="image/x-icon" href="favicon.ico">
+  
+  <!-- Tailwind CDN (Legacy Mode for Migration) -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Fira+Code:wght@400;500&display=swap" rel="stylesheet">
+  
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['Inter', 'sans-serif'],
+            mono: ['Fira Code', 'monospace'],
+          },
+          colors: {
+            slate: {
+              850: '#1e293b',
+              900: '#0f172a',
+              950: '#020617',
+            }
+          },
+          animation: {
+            'flow': 'flowAnimation 0.8s linear infinite',
+            'color-cycle': 'colorCycle 3s linear infinite',
+            'pulse-slow': 'pulse 3s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+            'fade-in': 'fadeIn 0.2s ease-out',
+          },
+          keyframes: {
+            flowAnimation: {
+              '0%': { strokeDashoffset: '20' },
+              '100%': { strokeDashoffset: '0' },
+            },
+            colorCycle: {
+              '0%': { filter: 'hue-rotate(0deg)' },
+              '100%': { filter: 'hue-rotate(360deg)' },
+            },
+            fadeIn: {
+              '0%': { opacity: '0', transform: 'translateY(5px)' },
+              '100%': { opacity: '1', transform: 'translateY(0)' },
+            }
+          }
+        }
+      }
+    }
+  </script>
+</head>
+<body class="bg-slate-900 text-slate-100 font-sans antialiased overflow-hidden">
+  <app-root></app-root>
+</body>
+</html>

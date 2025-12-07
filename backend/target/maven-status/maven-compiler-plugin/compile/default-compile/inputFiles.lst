@@ -1,0 +1,17 @@
+/home/mtoledo/Documentos/N8N Solser/v2-java-angular/backend/src/main/java/com/solser/api/SolserApiApplication.java
+/home/mtoledo/Documentos/N8N Solser/v2-java-angular/backend/src/main/java/com/solser/api/config/SecurityConfig.java
+/home/mtoledo/Documentos/N8N Solser/v2-java-angular/backend/src/main/java/com/solser/api/controllers/AuthController.java
+/home/mtoledo/Documentos/N8N Solser/v2-java-angular/backend/src/main/java/com/solser/api/controllers/FlowController.java
+/home/mtoledo/Documentos/N8N Solser/v2-java-angular/backend/src/main/java/com/solser/api/controllers/HealthController.java
+/home/mtoledo/Documentos/N8N Solser/v2-java-angular/backend/src/main/java/com/solser/api/controllers/LlmController.java
+/home/mtoledo/Documentos/N8N Solser/v2-java-angular/backend/src/main/java/com/solser/api/controllers/WorkspaceController.java
+/home/mtoledo/Documentos/N8N Solser/v2-java-angular/backend/src/main/java/com/solser/api/engine/FlowExecutorService.java
+/home/mtoledo/Documentos/N8N Solser/v2-java-angular/backend/src/main/java/com/solser/api/engine/NodeProcessor.java
+/home/mtoledo/Documentos/N8N Solser/v2-java-angular/backend/src/main/java/com/solser/api/engine/processors/LlmNodeProcessor.java
+/home/mtoledo/Documentos/N8N Solser/v2-java-angular/backend/src/main/java/com/solser/api/engine/processors/OutputNodeProcessor.java
+/home/mtoledo/Documentos/N8N Solser/v2-java-angular/backend/src/main/java/com/solser/api/engine/processors/StartNodeProcessor.java
+/home/mtoledo/Documentos/N8N Solser/v2-java-angular/backend/src/main/java/com/solser/api/engine/processors/ToolNodeProcessor.java
+/home/mtoledo/Documentos/N8N Solser/v2-java-angular/backend/src/main/java/com/solser/api/models/LlmRequest.java
+/home/mtoledo/Documentos/N8N Solser/v2-java-angular/backend/src/main/java/com/solser/api/models/ToolExecutionRequest.java
+/home/mtoledo/Documentos/N8N Solser/v2-java-angular/backend/src/main/java/com/solser/api/services/FlowService.java
+/home/mtoledo/Documentos/N8N Solser/v2-java-angular/backend/src/main/java/com/solser/api/services/WorkspaceTemplatesService.java

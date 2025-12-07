@@ -1,0 +1,149 @@
+
+!ENTRY org.eclipse.jdt.launching 4 4 2025-12-07 12:27:34.064
+!MESSAGE No existe el fichero o el directorio
+!STACK 0
+java.io.IOException: No existe el fichero o el directorio
+	at java.base/java.io.UnixFileSystem.createFileExclusively0(Native Method)
+	at java.base/java.io.UnixFileSystem.createFileExclusively(UnixFileSystem.java:258)
+	at java.base/java.io.File.createNewFile(File.java:1045)
+	at org.eclipse.jdt.internal.launching.LaunchingPlugin.writeInstallInfo(LaunchingPlugin.java:1110)
+	at org.eclipse.jdt.internal.launching.LaunchingPlugin$1$1.saving(LaunchingPlugin.java:584)
+	at org.eclipse.core.internal.resources.SaveManager.executeLifecycle(SaveManager.java:466)
+	at org.eclipse.core.internal.resources.SaveManager$1.run(SaveManager.java:271)
+	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:47)
+	at org.eclipse.core.internal.resources.SaveManager.broadcastLifecycle(SaveManager.java:274)
+	at org.eclipse.core.internal.resources.SaveManager.save(SaveManager.java:1284)
+	at org.eclipse.core.internal.resources.Workspace.save(Workspace.java:2549)
+	at org.eclipse.ui.internal.ide.application.IDEWorkbenchAdvisor.lambda$1(IDEWorkbenchAdvisor.java:555)
+	at org.eclipse.jface.operation.ModalContext$ModalContextThread.run(ModalContext.java:123)
+
+!ENTRY org.eclipse.core.resources 4 2 2025-12-07 12:27:34.069
+!MESSAGE Problems occurred when invoking code from plug-in: "org.eclipse.core.resources".
+!STACK 1
+org.eclipse.core.runtime.CoreException: Problems while saving variables and containers
+	at org.eclipse.jdt.internal.core.JavaModelManager.saveVariablesAndContainers(JavaModelManager.java:4455)
+	at org.eclipse.jdt.internal.core.JavaModelManager.savingTimed(JavaModelManager.java:4720)
+	at org.eclipse.jdt.internal.core.JavaModelManager.saving(JavaModelManager.java:4706)
+	at org.eclipse.core.internal.resources.SaveManager.executeLifecycle(SaveManager.java:466)
+	at org.eclipse.core.internal.resources.SaveManager$1.run(SaveManager.java:271)
+	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:47)
+	at org.eclipse.core.internal.resources.SaveManager.broadcastLifecycle(SaveManager.java:274)
+	at org.eclipse.core.internal.resources.SaveManager.save(SaveManager.java:1284)
+	at org.eclipse.core.internal.resources.Workspace.save(Workspace.java:2549)
+	at org.eclipse.ui.internal.ide.application.IDEWorkbenchAdvisor.lambda$1(IDEWorkbenchAdvisor.java:555)
+	at org.eclipse.jface.operation.ModalContext$ModalContextThread.run(ModalContext.java:123)
+Caused by: java.io.FileNotFoundException: /home/mtoledo/Documentos/N8N Solser/v2-java-angular/backend/.metadata/.plugins/org.eclipse.jdt.core/variablesAndContainers.dat (No existe el fichero o el directorio)
+	at java.base/java.io.FileOutputStream.open0(Native Method)
+	at java.base/java.io.FileOutputStream.open(FileOutputStream.java:289)
+	at java.base/java.io.FileOutputStream.<init>(FileOutputStream.java:230)
+	at java.base/java.io.FileOutputStream.<init>(FileOutputStream.java:179)
+	at org.eclipse.jdt.internal.core.JavaModelManager.saveVariablesAndContainers(JavaModelManager.java:4450)
+	... 10 more
+!SUBENTRY 1 org.eclipse.jdt.core 4 4 2025-12-07 12:27:34.069
+!MESSAGE Problems while saving variables and containers
+!STACK 0
+java.io.FileNotFoundException: /home/mtoledo/Documentos/N8N Solser/v2-java-angular/backend/.metadata/.plugins/org.eclipse.jdt.core/variablesAndContainers.dat (No existe el fichero o el directorio)
+	at java.base/java.io.FileOutputStream.open0(Native Method)
+	at java.base/java.io.FileOutputStream.open(FileOutputStream.java:289)
+	at java.base/java.io.FileOutputStream.<init>(FileOutputStream.java:230)
+	at java.base/java.io.FileOutputStream.<init>(FileOutputStream.java:179)
+	at org.eclipse.jdt.internal.core.JavaModelManager.saveVariablesAndContainers(JavaModelManager.java:4450)
+	at org.eclipse.jdt.internal.core.JavaModelManager.savingTimed(JavaModelManager.java:4720)
+	at org.eclipse.jdt.internal.core.JavaModelManager.saving(JavaModelManager.java:4706)
+	at org.eclipse.core.internal.resources.SaveManager.executeLifecycle(SaveManager.java:466)
+	at org.eclipse.core.internal.resources.SaveManager$1.run(SaveManager.java:271)
+	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:47)
+	at org.eclipse.core.internal.resources.SaveManager.broadcastLifecycle(SaveManager.java:274)
+	at org.eclipse.core.internal.resources.SaveManager.save(SaveManager.java:1284)
+	at org.eclipse.core.internal.resources.Workspace.save(Workspace.java:2549)
+	at org.eclipse.ui.internal.ide.application.IDEWorkbenchAdvisor.lambda$1(IDEWorkbenchAdvisor.java:555)
+	at org.eclipse.jface.operation.ModalContext$ModalContextThread.run(ModalContext.java:123)
+!SUBENTRY 1 org.eclipse.jdt.core 4 4 2025-12-07 12:27:34.070
+!MESSAGE Problems while saving variables and containers
+!STACK 0
+java.io.FileNotFoundException: /home/mtoledo/Documentos/N8N Solser/v2-java-angular/backend/.metadata/.plugins/org.eclipse.jdt.core/variablesAndContainers.dat (No existe el fichero o el directorio)
+	at java.base/java.io.FileOutputStream.open0(Native Method)
+	at java.base/java.io.FileOutputStream.open(FileOutputStream.java:289)
+	at java.base/java.io.FileOutputStream.<init>(FileOutputStream.java:230)
+	at java.base/java.io.FileOutputStream.<init>(FileOutputStream.java:179)
+	at org.eclipse.jdt.internal.core.JavaModelManager.saveVariablesAndContainers(JavaModelManager.java:4450)
+	at org.eclipse.jdt.internal.core.JavaModelManager.savingTimed(JavaModelManager.java:4720)
+	at org.eclipse.jdt.internal.core.JavaModelManager.saving(JavaModelManager.java:4706)
+	at org.eclipse.core.internal.resources.SaveManager.executeLifecycle(SaveManager.java:466)
+	at org.eclipse.core.internal.resources.SaveManager$1.run(SaveManager.java:271)
+	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:47)
+	at org.eclipse.core.internal.resources.SaveManager.broadcastLifecycle(SaveManager.java:274)
+	at org.eclipse.core.internal.resources.SaveManager.save(SaveManager.java:1284)
+	at org.eclipse.core.internal.resources.Workspace.save(Workspace.java:2549)
+	at org.eclipse.ui.internal.ide.application.IDEWorkbenchAdvisor.lambda$1(IDEWorkbenchAdvisor.java:555)
+	at org.eclipse.jface.operation.ModalContext$ModalContextThread.run(ModalContext.java:123)
+
+!ENTRY org.eclipse.m2e.logback.appender 4 0 2025-12-07 12:27:34.076
+!MESSAGE Can't write workspace state
+!STACK 0
+java.io.FileNotFoundException: /home/mtoledo/Documentos/N8N Solser/v2-java-angular/backend/.metadata/.plugins/org.eclipse.m2e.core/workspaceState.ser (No existe el fichero o el directorio)
+	at java.base/java.io.FileOutputStream.open0(Native Method)
+	at java.base/java.io.FileOutputStream.open(FileOutputStream.java:289)
+	at java.base/java.io.FileOutputStream.<init>(FileOutputStream.java:230)
+	at java.base/java.io.FileOutputStream.<init>(FileOutputStream.java:179)
+	at org.eclipse.m2e.core.internal.project.registry.ProjectRegistryReader.createObjectOutputStream(ProjectRegistryReader.java:127)
+	at org.eclipse.m2e.core.internal.project.registry.ProjectRegistryReader.writeWorkspaceState(ProjectRegistryReader.java:116)
+	at org.eclipse.m2e.core.internal.project.registry.ProjectRegistryManager.writeWorkspaceState(ProjectRegistryManager.java:1052)
+	at org.eclipse.m2e.core.internal.project.registry.ProjectRegistryManager.saving(ProjectRegistryManager.java:1203)
+	at org.eclipse.core.internal.resources.SaveManager.executeLifecycle(SaveManager.java:466)
+	at org.eclipse.core.internal.resources.SaveManager$1.run(SaveManager.java:271)
+	at org.eclipse.core.runtime.SafeRunner.run(SafeRunner.java:47)
+	at org.eclipse.core.internal.resources.SaveManager.broadcastLifecycle(SaveManager.java:274)
+	at org.eclipse.core.internal.resources.SaveManager.save(SaveManager.java:1284)
+	at org.eclipse.core.internal.resources.Workspace.save(Workspace.java:2549)
+	at org.eclipse.ui.internal.ide.application.IDEWorkbenchAdvisor.lambda$1(IDEWorkbenchAdvisor.java:555)
+	at org.eclipse.jface.operation.ModalContext$ModalContextThread.run(ModalContext.java:123)
+
+!ENTRY org.eclipse.ui.ide 4 4 2025-12-07 12:27:36.766
+!MESSAGE Problems saving workspace
+
+!ENTRY org.eclipse.ui.ide 4 1 2025-12-07 12:27:36.766
+!MESSAGE Problems occurred while trying to save the state of the workbench.
+!SUBENTRY 1 org.eclipse.core.resources 4 568 2025-12-07 12:27:36.766
+!MESSAGE Could not write workspace metadata '/home/mtoledo/Documentos/N8N Solser/v2-java-angular/backend/.metadata/.plugins/org.eclipse.core.resources/.root/1.tree'.
+!STACK 0
+java.io.FileNotFoundException: /home/mtoledo/Documentos/N8N Solser/v2-java-angular/backend/.metadata/.plugins/org.eclipse.core.resources/.root/1.tree (No existe el fichero o el directorio)
+	at java.base/java.io.FileOutputStream.open0(Native Method)
+	at java.base/java.io.FileOutputStream.open(FileOutputStream.java:289)
+	at java.base/java.io.FileOutputStream.<init>(FileOutputStream.java:230)
+	at java.base/java.io.FileOutputStream.<init>(FileOutputStream.java:179)
+	at org.eclipse.core.internal.localstore.SafeFileOutputStream.<init>(SafeFileOutputStream.java:55)
+	at org.eclipse.core.internal.resources.SaveManager.saveTree(SaveManager.java:1491)
+	at org.eclipse.core.internal.resources.SaveManager.save(SaveManager.java:1288)
+	at org.eclipse.core.internal.resources.Workspace.save(Workspace.java:2549)
+	at org.eclipse.ui.internal.ide.application.IDEWorkbenchAdvisor.lambda$1(IDEWorkbenchAdvisor.java:555)
+	at org.eclipse.jface.operation.ModalContext$ModalContextThread.run(ModalContext.java:123)
+
+!ENTRY org.eclipse.core.resources 2 10035 2025-12-07 12:27:37.763
+!MESSAGE The workspace will exit with unsaved changes in this session.
+!SESSION 2025-12-07 12:50:49.249 -----------------------------------------------
+eclipse.buildId=4.37.0.20250905-1455
+java.version=21.0.8
+java.vendor=Eclipse Adoptium
+BootLoader constants: OS=linux, ARCH=x86_64, WS=gtk, NL=es_MX
+Framework arguments:  -product org.eclipse.epp.package.java.product
+Command-line arguments:  -os linux -ws gtk -arch x86_64 -product org.eclipse.epp.package.java.product
+
+!ENTRY ch.qos.logback.classic 1 0 2025-12-07 12:50:59.202
+!MESSAGE Activated before the state location was initialized. Retry after the state location is initialized.
+
+!ENTRY org.eclipse.lemminx.uber-jar 4 0 2025-12-07 12:50:59.701
+!MESSAGE bundle org.eclipse.lemminx.uber-jar:0.31.0 (274) Component descriptor entry 'OSGI-INF/*.xml' not found
+
+!ENTRY ch.qos.logback.classic 1 0 2025-12-07 12:51:23.005
+!MESSAGE Logback config file: /home/mtoledo/Documentos/N8N Solser/v2-java-angular/backend/.metadata/.plugins/org.eclipse.m2e.logback/logback.2.7.100.20250418-1315.xml
+
+!ENTRY org.eclipse.ui 2 0 2025-12-07 12:51:23.481
+!MESSAGE Warnings while parsing the commands from the 'org.eclipse.ui.commands' and 'org.eclipse.ui.actionDefinitions' extension points.
+!SUBENTRY 1 org.eclipse.ui 2 0 2025-12-07 12:51:23.481
+!MESSAGE Commands should really have a category: plug-in='org.springframework.tooling.boot.ls', id='spring.initializr.addStarters', categoryId='org.eclipse.lsp4e.commandCategory'
+
+!ENTRY org.eclipse.ui 2 0 2025-12-07 12:51:23.848
+!MESSAGE Warnings while parsing the commands from the 'org.eclipse.ui.commands' and 'org.eclipse.ui.actionDefinitions' extension points.
+!SUBENTRY 1 org.eclipse.ui 2 0 2025-12-07 12:51:23.848
+!MESSAGE Commands should really have a category: plug-in='org.springframework.tooling.boot.ls', id='spring.initializr.addStarters', categoryId='org.eclipse.lsp4e.commandCategory'

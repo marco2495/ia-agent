@@ -1,0 +1,108 @@
+<div class="flex h-screen w-screen overflow-hidden bg-slate-950 dot-pattern" (mouseup)="onWindowMouseUp()">
+  
+  <!-- Sidebar -->
+  <app-sidebar class="z-50 shadow-xl"></app-sidebar>
+  
+  <!-- Main Area -->
+  <main class="flex-1 relative overflow-hidden group canvas-container cursor-grab active:cursor-grabbing"
+        (mousedown)="onCanvasMouseDown($event)">
+    
+    <!-- Toolbar -->
+    <div class="absolute top-0 left-0 right-0 h-16 bg-slate-900/80 backdrop-blur-md z-40 border-b border-white/5 flex items-center justify-between px-6 pointer-events-none select-none">
+      <div class="pointer-events-auto flex items-center gap-4">
+         <div class="px-3 py-1 bg-slate-800 rounded-lg border border-white/10 text-xs text-slate-400 font-mono">
+           Workspace: <strong class="text-slate-200">Demo Flow</strong>
+         </div>
+         <div class="px-3 py-1 bg-green-500/10 text-green-400 rounded-lg border border-green-500/20 text-xs flex items-center gap-2">
+           <span class="w-2 h-2 rounded-full bg-green-500 animate-pulse"></span>
+           Spring AI Active
+         </div>
+      </div>
+      <div class="pointer-events-auto flex items-center gap-2">
+        <button (click)="runFlow()" class="px-4 py-2 bg-blue-600 hover:bg-blue-500 text-white text-sm font-bold rounded-lg shadow-lg shadow-blue-500/20 transition-all active:scale-95 flex items-center gap-2">
+          <span *ngIf="isRunning" class="animate-spin">⏳</span>
+          <span *ngIf="!isRunning">▶</span>
+          {{ isRunning ? 'Running...' : 'Execute Flow' }}
+        </button>
+      </div>
+    </div>
+
+    <!-- Transform Layer (Pan & Zoom) -->
+    <div class="absolute inset-0 origin-top-left will-change-transform"
+         [style.transform]="'translate3d(' + pan().x + 'px, ' + pan().y + 'px, 0) scale(' + zoom() + ')'">
+
+        <!-- Connections Layer -->
+        <!-- SVG size must be large or infinite conceptual. 
+             For simplicity, we assume the SVG covers the known area or is static huge.
+             Ideally, SVG is absolutely positioned '0 0' and has overflow visible. -->
+        <svg class="absolute top-0 left-0 overflow-visible pointer-events-none z-0" style="width: 1px; height: 1px;">
+           <defs>
+               <marker id="arrowhead" markerWidth="10" markerHeight="7" 
+                   refX="9" refY="3.5" orient="auto">
+                   <polygon points="0 0, 10 3.5, 0 7" fill="#64748b" />
+               </marker>
+           </defs>
+           
+           <!-- Existing Connections -->
+           <path *ngFor="let conn of connections()"
+                 [attr.d]="getConnectionPath(conn)"
+                 stroke="#64748b"
+                 stroke-width="2"
+                 fill="none"
+                 marker-end="url(#arrowhead)"
+                 class="transition-colors hover:stroke-white cursor-pointer" />
+
+            <!-- Temp Connection (Dragging) -->
+            <path *ngIf="tempConnection()"
+                  [attr.d]="getTempPath()"
+                  stroke="#3b82f6"
+                  stroke-width="2"
+                  stroke-dasharray="5,5"
+                  fill="none"
+                  marker-end="url(#arrowhead)"
+                  class="animate-pulse" />
+        </svg>
+
+        <!-- Nodes Layer -->
+        <app-node-widget
+          *ngFor="let node of nodes()"
+          [data]="node"
+          [x]="node.position.x"
+          [y]="node.position.y"
+          (cdkDragMoved)="onNodeDragMoved($event, node)" 
+          (cdkDragEnded)="onNodeDragEnded($event, node)"
+          (startConnection)="startConnection(node.id, $event)"
+          (finishConnection)="finishConnection(node.id, $event)">
+        </app-node-widget>
+
+    </div>
+    
+  </main>
+  
+  <!-- Footer / Controls -->
+  <div class="absolute bottom-6 left-6 z-50 flex gap-2">
+      <div class="bg-slate-900/90 backdrop-blur border border-white/10 rounded-lg p-1 flex text-slate-400">
+          <button class="w-8 h-8 flex items-center justify-center hover:bg-white/10 rounded" (click)="zoom.set(zoom() - 0.1)">-</button>
+          <div class="w-12 flex items-center justify-center text-xs font-mono">{{ (zoom() * 100).toFixed(0) }}%</div>
+          <button class="w-8 h-8 flex items-center justify-center hover:bg-white/10 rounded" (click)="zoom.set(zoom() + 0.1)">+</button>
+      </div>
+  </div>
+
+  <!-- Result Overlay -->
+  <div *ngIf="lastResult" class="absolute bottom-0 left-0 right-0 h-80 bg-slate-950/95 border-t border-slate-700/50 p-6 z-50 backdrop-blur-2xl transition-transform duration-300"
+       [class.translate-y-full]="!showResult">
+     <div class="flex justify-between items-start mb-4">
+       <div class="flex items-center gap-3">
+           <span class="text-2xl">⚡</span>
+           <div>
+               <h3 class="text-lg font-bold text-slate-100">Execution Result</h3>
+               <p class="text-xs text-slate-400">Response from Spring AI Backend</p>
+           </div>
+       </div>
+       <button (click)="lastResult = null" class="w-8 h-8 rounded-full bg-white/5 hover:bg-white/10 text-slate-400 hover:text-white flex items-center justify-center transition-colors">✕</button>
+     </div>
+     <div class="bg-black/50 p-4 rounded-xl border border-white/5 h-52 overflow-auto custom-scrollbar">
+         <pre class="text-sm font-mono text-emerald-400">{{ lastResult | json }}</pre>
+     </div>
+  </div>
+</div>
